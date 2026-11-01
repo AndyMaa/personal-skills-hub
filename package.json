@@ -1,0 +1,34 @@
+{
+  "name": "personal-skills-hub",
+  "version": "1.0.1",
+  "private": true,
+  "type": "module",
+  "description": "A local Codex plugin for selecting the right skills per project.",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "skills",
+    "plugin",
+    "skill-manager"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/cli.mjs serve --open",
+    "test": "node --test",
+    "check": "node scripts/check.mjs",
+    "scan": "node src/cli.mjs scan",
+    "install:codex": "node src/install.mjs",
+    "package:share": "python -X utf8 scripts/package_share.py",
+    "verify:share": "python -X utf8 scripts/verify_share.py --skip-codex"
+  },
+  "homepage": "https://github.com/AndyMaa/personal-skills-hub",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndyMaa/personal-skills-hub.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AndyMaa/personal-skills-hub/issues"
+  }
+}

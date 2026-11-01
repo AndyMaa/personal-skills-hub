@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "personal-skills-hub",
+  "version": "1.0.1",
+  "description": "Choose the right local Codex skills for each project, with conflict detection and reversible project configuration.",
+  "author": {
+    "name": "Personal Skills Hub"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/AndyMaa/personal-skills-hub",
+  "repository": "https://github.com/AndyMaa/personal-skills-hub"
+}

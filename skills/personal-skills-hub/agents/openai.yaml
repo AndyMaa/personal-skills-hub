@@ -1,0 +1,4 @@
+interface:
+  display_name: "Personal Skills Hub"
+  short_description: "按项目选择、组合和切换已安装技能，识别重复来源与相似技能边界"
+  default_prompt: "使用 $personal-skills-hub 为当前项目选择合适的 skills，并检查相似技能冲突。"

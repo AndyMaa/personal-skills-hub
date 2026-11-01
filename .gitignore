@@ -1,0 +1,15 @@
+node_modules/
+.hub/
+test-results/
+*.log
+dist/
+.personal-skills-hub/
+__pycache__/
+*.py[cod]
+coverage/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.psh-*.tmp

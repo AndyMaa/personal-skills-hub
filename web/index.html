@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Skills Hub</title><link rel="icon" href="/icon.svg"><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Personal Skills Hub 首页"><img src="/icon.svg" alt=""><span>PERSONAL<br><b>SKILLS HUB</b></span></a>
+    <div class="workspace-badge"><span class="dot"></span> CODEX · LOCAL PLUGIN</div>
+    <p class="nav-label">你的技能空间</p>
+    <nav id="navigation" aria-label="技能分类"></nav>
+    <div class="sidebar-bottom"><div class="tiny-label">保持专注，选对工具。</div><p>每个项目，都有自己的技能组合。</p><button id="rescan" class="subtle full">↻ 重新扫描技能库</button><span id="scan-time"></span></div>
+  </aside>
+  <main>
+    <header class="topbar"><span>工作空间 <span class="separator">/</span> 技能库</span><div><span class="dot"></span> 本机运行 <span class="version">v1.0.1</span></div></header>
+    <section class="content">
+      <div class="eyebrow">YOUR TOOLKIT, YOUR RULES</div>
+      <div class="heading-row"><h1>为项目，选对技能<span>。</span></h1><span id="total-badge" class="count-badge">扫描中</span></div>
+      <p class="intro">把分散的 skills 整理成清晰的工作流，让 Codex 在合适的时候用合适的工具。</p>
+      <div class="stats" id="stats"></div>
+      <section class="starter">
+        <div class="section-heading"><div><span class="section-kicker">QUICK START</span><h2>从一个项目类型开始</h2></div><span class="muted">选择技能包，再按需调整</span></div>
+        <div class="presets" id="presets"></div>
+        <div class="brief-row"><span class="spark">✧</span><input id="brief" placeholder="或描述你的项目，例如：将研究报告做成可编辑 PPT" aria-label="描述项目需求"><button id="recommend" class="subtle">推荐技能 →</button></div>
+        <div id="recommendation" class="recommendation" hidden></div>
+      </section>
+      <div class="catalog-bar"><div><h2 id="catalog-title">全部技能</h2><span id="results-count" class="muted"></span></div><div class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="搜索名称、用途、来源…" aria-label="搜索技能"><kbd>/</kbd></div></div>
+      <div class="filter-bar"><div id="source-filters" class="tabs"><button data-source="all" class="active">全部来源</button><button data-source="local">本地</button><button data-source="plugin">插件</button><button data-source="system">内置</button></div><label class="checkbox"><input type="checkbox" id="duplicates-only"> 只看重复安装</label></div>
+      <div id="skill-grid" class="skill-grid" aria-live="polite"></div>
+      <div id="empty" class="empty" hidden><b>没有找到匹配技能</b><p>换个关键词，或调整左侧分类。</p><button id="reset-filter" class="subtle">清除筛选</button></div>
+      <footer>LOCAL FIRST <span>·</span> 不上传技能内容 <span>·</span> 保留原有技能文件</footer>
+    </section>
+  </main>
+  <aside class="project-panel">
+    <div class="panel-title"><div class="panel-symbol">⌘</div><div><h2>项目技能组合</h2><span>只添加这次项目需要的</span></div></div>
+    <label class="field-label" for="project-path">目标项目</label>
+    <div class="path-row"><input id="project-path" placeholder="粘贴项目文件夹绝对路径" autocomplete="off"><button id="browse" class="icon-button" title="选择项目文件夹" aria-label="选择项目文件夹">▱</button></div>
+    <div id="project-status" class="project-status">先选择项目文件夹</div>
+    <div class="selection-heading"><span>已选技能 <b id="selected-count">0</b></span><button id="clear-selection" class="text-button">清空</button></div>
+    <div id="selected-list" class="selected-list"></div>
+    <div id="selection-empty" class="selection-empty"><span>＋</span><p>你的下一个项目，<br>从一个合适的技能开始。</p></div>
+    <div id="conflicts" class="notice conflict" hidden></div><div id="warnings" class="notice" hidden></div>
+    <div class="panel-bottom">
+      <label class="field-label" for="mode">项目使用模式</label>
+      <select id="mode"><option value="guided">Codex 桌面 · 按项目路由</option><option value="focused">聚焦 CLI · 使用专用启动器</option></select>
+      <p class="mode-note" id="mode-note">为新项目聊天指定技能及适用边界；其他技能仍可见。添加后请开启新聊天。</p>
+      <button id="apply" class="primary full" disabled>＋ 一键添加到项目</button>
+      <button id="preview" class="subtle full" disabled>查看将写入的内容</button>
+      <div class="panel-actions"><button id="save-profile" class="text-button">保存组合</button><button id="undo" class="text-button">撤回上次添加</button><button id="detach" class="text-button">移除项目配置</button></div>
+      <div id="saved-profiles" class="saved-profiles"></div>
+    </div>
+  </aside>
+  <dialog id="details-dialog"><div class="dialog-heading"><h2 id="detail-title"></h2><button class="icon-button close-dialog" aria-label="关闭">×</button></div><div id="detail-content"></div></dialog>
+  <dialog id="preview-dialog"><div class="dialog-heading"><h2>项目变更预览</h2><button class="icon-button close-dialog" aria-label="关闭">×</button></div><p class="muted" id="preview-summary"></p><div id="preview-tabs" class="tabs"></div><pre id="preview-content"></pre><button id="preview-apply" class="primary full">应用这个组合</button></dialog>
+  <dialog id="profile-dialog"><div class="dialog-heading"><h2>保存为我的组合</h2><button class="icon-button close-dialog" aria-label="关闭">×</button></div><label for="profile-name" class="field-label">组合名称</label><input id="profile-name" placeholder="例如：年度汇报" maxlength="40"><p class="muted">组合保存在当前浏览器，供下次快速选择。</p><button id="confirm-profile" class="primary full">保存组合</button></dialog>
+  <dialog id="detach-dialog"><div class="dialog-heading"><h2>移除项目配置</h2><button class="icon-button close-dialog" aria-label="关闭">×</button></div><p>将移除本项目 AGENTS.md 和 config.toml 中由 Hub 管理的区块，并保留其他内容。原始技能文件不会删除。</p><button id="confirm-detach" class="primary full">移除 Hub 管理区块</button></dialog>
+  <div id="toast" role="status" hidden></div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "name": "personal-skills-hub",
+  "version": "1.0.1",
+  "description": "按项目挑选本机 skills，合并重复来源，提示路线冲突，并一键写入可撤回的项目级 Codex 技能配置。",
+  "author": {
+    "name": "Personal Skills Hub"
+  },
+  "license": "MIT",
+  "skills": "./skills/",
+  "requires_local_executor": true,
+  "interface": {
+    "displayName": "Personal Skills Hub",
+    "shortDescription": "为每个项目选择合适的 skills",
+    "longDescription": "本地技能目录、分类、适用边界、项目技能包、冲突检查与可撤回的项目配置。通过中文面板或 Codex 对话使用。",
+    "developerName": "Personal Skills Hub",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "打开 Personal Skills Hub，为当前项目选择 skills",
+      "为这个项目推荐合适的技能组合，并检查相似技能冲突"
+    ],
+    "brandColor": "#C7F171",
+    "composerIcon": "./web/icon.svg",
+    "logo": "./web/icon.svg",
+    "websiteURL": "https://github.com/AndyMaa/personal-skills-hub"
+  },
+  "homepage": "https://github.com/AndyMaa/personal-skills-hub",
+  "repository": "https://github.com/AndyMaa/personal-skills-hub"
+}
